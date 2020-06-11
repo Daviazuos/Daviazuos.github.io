@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>	
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="static/js/script.js"></script>
+
+<html>
+	<body>
+	<div class="container h-100">
+			<div class="col-md-15 col-md-offset-15">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				  <a class="navbar-brand" href="#">Organizze</a>
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+					  <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+					  <a class="nav-item nav-link active" href="/add_divida">Adicionar Dividas</a>
+					  <a class="nav-item nav-link active" href="/edit_divida">Editar Dividas</a>
+					  <a class="nav-item nav-link active" href="/add_card">Adicionar cartão de credito</a>
+					</div>
+				  </div>
+				</nav>
+				<form method="get">
+					<div class="dropdown">
+					<select class="btn btn-secondary dropdown-toggle" type="button" id="getbymonth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option class="dropdown-item" value="" disabled="disabled"  style="display:none" selected="selected">Selecione um mês</option>
+                        <option class="dropdown-item" value="01">Janeiro</option>
+                        <option class="dropdown-item" value="02">Fevereiro</option>
+                        <option class="dropdown-item" value="03">Março</option>
+                        <option class="dropdown-item" value="04">Abril</option>						
+                        <option class="dropdown-item" value="05">Maio</option>						
+                        <option class="dropdown-item" value="06">Junho</option>						
+                        <option class="dropdown-item" value="07">Julho</option>						
+                        <option class="dropdown-item" value="08">Agosto</option>						
+                        <option class="dropdown-item" value="09">Setembro</option>						
+                        <option class="dropdown-item" value="10">Outubro</option>						
+                        <option class="dropdown-item" value="11">Novembro</option>						
+                        <option class="dropdown-item" value="12">Dezembro</option>						
+                    </select>
+					</div>
+  				</form>
+
+	<p> Valores de dívidas </p>
+		<table id="example" class="table table-striped table-bordered">
+			<thead>
+				<tr>
+				  <th scope="col">Nome da dívida</th>
+				  <th scope="col">Valor</th>
+				  <th scope="col">Plano</th>
+				  <th scope="col">Vencimento</th>
+				  <th scope="col">Tipo De Divida</th>
+				  <th scope="col">Status</th>
+				</tr>
+			</thead>
+		</table>
+	</body>
+</html> 
