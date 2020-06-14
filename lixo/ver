@@ -1,0 +1,19 @@
+<form method="get">
+					<div class="dropdown">
+					<select class="btn btn-secondary dropdown-toggle" type="button" id="getbymonth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option class="dropdown-item" value="" disabled="disabled"  style="display:none" selected="selected">Selecione um mês</option>
+                        <option class="dropdown-item" value="01">Janeiro</option>
+                        <option class="dropdown-item" value="02">Fevereiro</option>
+                        <option class="dropdown-item" value="03">Março</option>
+                        <option class="dropdown-item" value="04">Abril</option>						
+                        <option class="dropdown-item" value="05">Maio</option>						
+                        <option class="dropdown-item" value="06">Junho</option>						
+                        <option class="dropdown-item" value="07">Julho</option>						
+                        <option class="dropdown-item" value="08">Agosto</option>						
+                        <option class="dropdown-item" value="09">Setembro</option>						
+                        <option class="dropdown-item" value="10">Outubro</option>						
+                        <option class="dropdown-item" value="11">Novembro</option>						
+                        <option class="dropdown-item" value="12">Dezembro</option>						
+                    </select>
+					</div>
+  				</form>

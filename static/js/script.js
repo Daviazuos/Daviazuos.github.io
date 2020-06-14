@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#example').DataTable( {
+    $('#getDebts').DataTable( {
         "ajax": {
             "url": "http://127.0.0.1:5000/",
             "dataSrc": ""
@@ -11,13 +11,27 @@ $(document).ready(function() {
             { "data": "vencimento" },
             { "data": "TipoDeDivida" },
             { "data": "Status" }
-        ]
+        ],
+        bFilter: false,
+        bInfo: false,
+        paging: false
+
     } );
 })
 
-$(document).ready(function(){
-    $("select.btn btn-secondary dropdown-toggle").change(function(){
-        var selectedMonth = $(this).children("option:selected").val();
-        alert("You have selected the month - " + selectedMonth);
+function SendValues() {
+    document.getElementById('myform').submit();
+    var formData = JSON.stringify($("#myform").serializeArray());
+    $.ajax({
+        url: "http://127.0.0.1:5000/AddSimple",
+        type: "POST",
+        data: formData,
+        dataType:'json',
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(error){
+            console.log("Something went wrong", error);
+        }
     });
-});
+}
