@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#getDebts').DataTable( {
         "ajax": {
-            "url": "http://127.0.0.1:5000/",
+            "url": "https://projectdividas.herokuapp.com/",
             "dataSrc": ""
         },
         "columns": [
