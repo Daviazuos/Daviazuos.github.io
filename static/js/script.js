@@ -24,7 +24,7 @@ myHeaders.append('Content-Type', 'application/json');
 
 function onSubmit( form ){
     var data = objectifyForm(form);
-    fetch("https://projectdividas.herokuapp.com/", {
+    fetch("https://projectdividas.herokuapp.com/AddSimple", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),
