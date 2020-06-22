@@ -19,19 +19,29 @@ $(document).ready(function() {
     } );
 })
 
-function SendValues() {
-    document.getElementById('myform').submit();
-    var formData = JSON.stringify($("#myform").serializeArray());
-    $.ajax({
-        url: "http://127.0.0.1:5000/AddSimple",
-        type: "POST",
-        data: formData,
-        dataType:'json',
-        success: function (response) {
-            console.log(response);
-        },
-        error: function(error){
-            console.log("Something went wrong", error);
+var myHeaders = new Headers();
+myHeaders.append('Content-Type', 'application/json');
+
+function onSubmit( form ){
+    var data = objectifyForm(form);
+    fetch("https://projectdividas.herokuapp.com/", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data),
+            cache: 'default',
+            mode: 'cors'
+      }).then(res=>res.json())
+      .catch((error) => {
+      console.log(error)})
+      alert("Valor Adicionado!")
+  }
+
+function objectifyForm(formArray) 
+    {
+        var returnArray = {};
+        for (var i = 0; i < formArray.length-1; i++)
+        {
+            returnArray[formArray[i]['name']] = formArray[i]['value'];
         }
-    });
-}
+        return returnArray;
+    }

@@ -50,6 +50,7 @@
 				</table>
 			</div>
 			<p></p>
+
 			
 			<button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#exampleModal">Adicionar Divida</button>
 
@@ -60,34 +61,34 @@
 					<h4 class="modal-title" id="exampleModalLabel">Adicionar Dívidas</h4>
 					</div>
 					<div class="modal-body">
-						<form class="form-group" id="myform" onsubmit="SendValues()">
+						<form onsubmit='return onSubmit(this)'>
 							<div class="form-group mr-2">
 								<label class="sr-only" for="inputNameDebts">Nome da dívida</label>
-								<input class="form-control" id="inputNameDebts" placeholder="Nome da dívida">
+								<input class="form-control" name="Name" placeholder="Nome da dívida">
 							</div>
 							<div class="form-group mr-2">
 								<label class="sr-only" for="inputValue">Valor</label>
-								<input class="form-control" id="inputValue" type='number' step='0.01' placeholder="Valor da dívida">
+								<input class="form-control" name="Valor" type='number' step='0.01' placeholder="Valor da dívida">
 							</div>
 							<div class="form-group mr-2">
 								<label class="sr-only" for="inputDate">Data</label>
-								<input class="form-control" id="inputDate" type="date" placeholder="Data da dívida">
+								<input class="form-control" name="Vencimento" type="date" placeholder="Data da dívida">
 							</div>
 							<div class="dropdown">
-								<select class="btn btn-secondary dropdown-toggle" type="button" id="inputType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<option class="dropdown-item" value="" disabled="disabled"  style="display:none" selected="selected">Selecione Tipo de dívida</option>
-									<option class="dropdown-item" value="simples">Simples</option>
-									<option class="dropdown-item" value="fixa">Fixa</option>
-									<option class="dropdown-item" value="parcelada">Parcelada</option>
+								<select class="btn btn-secondary dropdown-toggle" name="TipoDeDivida" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<option class="dropdown-item" name="TipoDeDivida" value="" disabled="disabled"  style="display:none" selected="selected">Selecione Tipo de dívida</option>
+									<option class="dropdown-item" name="TipoDeDivida" value="simples">Simples</option>
+									<option class="dropdown-item" name="TipoDeDivida" value="fixa">Fixa</option>
+									<option class="dropdown-item" name="TipoDeDivida" value="parcelada">Parcelada</option>
 								</select>
 							</div>
 							<p></p>
 							<div class="form-group mr-2">
 								<label class="sr-only" for="inputPlan">Quantidade de parcelas</label>
-								<input class="form-control" id="inputPlan" type="number" placeholder="Quantidade de parcelas">
+								<input class="form-control" name="QuantidadeParcelas" type="number" placeholder="Quantidade de parcelas">
 							</div>
-							<button type="button" class="btn btn-primary">Submit</button>
-						</form>
+							<button type='submit' class="btn btn-primary">Enviar</button>
+						  </form>						  
 					</div>
 					<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
