@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#getDebts').DataTable( {
         "ajax": {
-            "url": "http://127.0.0.1:5000/",
+            "url": "https://projectdividas.herokuapp.com/",
             "dataSrc": ""
         },
         "columns": [
@@ -42,7 +42,7 @@ $(function () {
 
 function onSubmit( form ){
     var data = objectifyForm(form);
-    fetch("http://127.0.0.1:5000/AddSimple", {
+    fetch("https://projectdividas.herokuapp.com//AddSimple", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),
