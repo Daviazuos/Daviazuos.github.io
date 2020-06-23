@@ -1,12 +1,12 @@
 $(document).ready(function() {
     $('#getDebts').DataTable( {
         "ajax": {
-            "url": "https://projectdividas.herokuapp.com/",
+            "url": "http://127.0.0.1:5000/",
             "dataSrc": ""
         },
         "columns": [
             { "data": "name" },
-            { "data": "valor" },
+            { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "numeroparcelas" },
             { "data": "vencimento" },
             { "data": "TipoDeDivida" },
@@ -19,12 +19,30 @@ $(document).ready(function() {
     } );
 })
 
-var myHeaders = new Headers();
-myHeaders.append('Content-Type', 'application/json');
+
+$(function () {
+    $("#TipoDeDivida").change(function () {
+        if ($(this).val() == "parcelada") {
+            $("#QuantidadeParcelas").show();
+        } else {
+            $("#QuantidadeParcelas").hide();
+        }
+    });
+});
+
+$(function () {
+    $("#exampleCheck1").change(function () {
+        if ($(this).val() == true) {
+            $("#inputNameDebts").show();
+        } else {
+            $("#inputNameDebts").hide();
+        }
+    });
+});
 
 function onSubmit( form ){
     var data = objectifyForm(form);
-    fetch("https://projectdividas.herokuapp.com/AddSimple", {
+    fetch("http://127.0.0.1:5000/AddSimple", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),

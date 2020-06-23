@@ -10,6 +10,12 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <html>
@@ -62,8 +68,9 @@
 					</div>
 					<div class="modal-body">
 						<form onsubmit='return onSubmit(this)'>
+							<p></p>
 							<div class="form-group mr-2">
-								<label class="sr-only" for="inputNameDebts">Nome da dívida</label>
+								<label class="sr-only" for="inputNameDebts" id="inputNameDebts">Nome da dívida</label>
 								<input class="form-control" name="Name" placeholder="Nome da dívida">
 							</div>
 							<div class="form-group mr-2">
@@ -75,17 +82,17 @@
 								<input class="form-control" name="Vencimento" type="date" placeholder="Data da dívida">
 							</div>
 							<div class="dropdown">
-								<select class="btn btn-secondary dropdown-toggle" name="TipoDeDivida" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<select class="btn btn-secondary dropdown-toggle" id="TipoDeDivida" name="TipoDeDivida" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<option class="dropdown-item" name="TipoDeDivida" value="" disabled="disabled"  style="display:none" selected="selected">Selecione Tipo de dívida</option>
-									<option class="dropdown-item" name="TipoDeDivida" value="simples">Simples</option>
-									<option class="dropdown-item" name="TipoDeDivida" value="fixa">Fixa</option>
-									<option class="dropdown-item" name="TipoDeDivida" value="parcelada">Parcelada</option>
+									<option class="dropdown-item" id="simples" name="TipoDeDivida" value="simples">Simples</option>
+									<option class="dropdown-item" id= "fixa" name="TipoDeDivida" value="fixa">Fixa</option>
+									<option class="dropdown-item" id="parcelada" name="TipoDeDivida" value="parcelada">Parcelada</option>
 								</select>
 							</div>
 							<p></p>
 							<div class="form-group mr-2">
 								<label class="sr-only" for="inputPlan">Quantidade de parcelas</label>
-								<input class="form-control" name="QuantidadeParcelas" type="number" placeholder="Quantidade de parcelas">
+								<input class="form-control" name="QuantidadeParcelas" id="QuantidadeParcelas" type="number" placeholder="Quantidade de parcelas">
 							</div>
 							<button type='submit' class="btn btn-primary">Enviar</button>
 						  </form>						  
