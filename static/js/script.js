@@ -15,10 +15,25 @@ $(document).ready(function() {
         bFilter: false,
         bInfo: false,
         paging: false
-
     } );
 })
 
+$(document).ready(function() {
+    $('#getCards').DataTable( {
+        "ajax": {
+            "url": "https://projectdividas.herokuapp.com//GetCards",
+            "dataSrc": ""
+        },
+        "columns": [
+            { "data": "Cardname" },
+            { "data": "Vencimento" },
+            { "data": "Fechamento" }
+        ],
+        bFilter: false,
+        bInfo: false,
+        paging: false
+    } );
+})
 
 $(function () {
     $("#TipoDeDivida").change(function () {
@@ -54,6 +69,45 @@ function onSubmit( form ){
       alert("Valor Adicionado!")
   }
 
+function onSubmitCard( form ){
+    var data = objectifyForm(form);
+    fetch("https://projectdividas.herokuapp.com//AddCard", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data),
+            cache: 'default',
+            mode: 'cors'
+      }).then(res=>res.json())
+      .catch((error) => {
+      console.log(error)})
+      alert("Cartão Adicionado!")
+  }
+
+function onSubmitCardValues( form ){
+    var data = objectifyForm(form);
+    fetch("https://projectdividas.herokuapp.com//AddValuesCard", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data),
+            cache: 'default',
+            mode: 'cors'
+      }).then(res=>res.json())
+      .catch((error) => {
+      console.log(error)})
+      alert("Valor adicionado ao cartão!")
+  }
+
+
+$(document).ready(function() {
+    $('#selectname').select2({
+        ajax: {
+            url: "http://127.0.0.1:5000//GetCardsNames",
+            dataType: 'json',
+        },
+    });
+});
+  
+  
 function objectifyForm(formArray) 
     {
         var returnArray = {};
