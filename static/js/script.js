@@ -101,7 +101,7 @@ function onSubmitCardValues( form ){
 $(document).ready(function() {
     $('#selectname').select2({
         ajax: {
-            url: "http://127.0.0.1:5000//GetCardsNames",
+            url: "https://projectdividas.herokuapp.com//GetCardsNames",
             dataType: 'json',
         },
     });
