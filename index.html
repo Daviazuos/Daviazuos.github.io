@@ -181,7 +181,7 @@
 					<div class="modal-body">
 						<form onsubmit='return onSubmitCardValues(this)'>
 							<div class="dropdown">
-								<select class="btn btn-secondary dropdown-toggle" id="selectSkill">
+								<select class="btn btn-secondary dropdown-toggle" id="CardName" name="CardName"  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<option class="dropdown-item" value="" disabled="disabled"  style="display:none" selected="selected">Selecione o cartão</option>
 								</select>
 							</div>
@@ -207,6 +207,10 @@
 							<div class="form-group mr-2">
 								<label class="sr-only" for="inputPlan">Quantidade de parcelas</label>
 								<input class="form-control" name="QuantidadeParcelasCartao" id="QuantidadeParcelasCartao" type="number" placeholder="Quantidade de parcelas">
+							</div>
+							<div class="form-group mr-2">
+								<label class="sr-only" for="inputDescription" id="inputDescription">Descrição</label>
+								<input class="form-control" name="Descricao" placeholder="Descrição">
 							</div>
 							<button type='submit' class="btn btn-primary">Enviar</button>
 						  </form>						  

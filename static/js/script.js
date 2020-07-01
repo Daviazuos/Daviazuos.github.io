@@ -101,7 +101,7 @@ var API = "https://projectdividas.herokuapp.com//GetCardsNames";
 $.getJSON(API)
         .done(function(data){    
         $.each(data, function (i, p) {
-                $('#selectSkill').append($('<option>name="CardName"</option>').val(p.Cardname).html(p.Cardname));
+                $('#CardName').append($('<option class="dropdown-item" id="CardName" name="CardName">> </option>').val(p.Cardname).html(p.Cardname));
             });
       });
 
