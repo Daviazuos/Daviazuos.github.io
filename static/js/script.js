@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#getDebts').DataTable( {
         "ajax": {
-            "url": "https://projectdividas.herokuapp.com/",
+            "url": "https://projectdividas.herokuapp.com//Simple",
             "dataSrc": ""
         },
         "columns": [
@@ -11,6 +11,27 @@ $(document).ready(function() {
             { "data": "vencimento" },
             { "data": "TipoDeDivida" },
             { "data": "Status" }
+        ],
+        bFilter: false,
+        bInfo: false,
+        paging: false
+    } );
+})
+
+$(document).ready(function() {
+    $('#getCardDebts').DataTable( {
+        "ajax": {
+            "url": "https://projectdividas.herokuapp.com//Card",
+            "dataSrc": ""
+        },
+        "columns": [
+            { "data": "name" },
+            { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "numeroparcelas" },
+            { "data": "vencimento" },
+            { "data": "TipoDeDivida" },
+            { "data": "Status" },
+            { "data": "Descricao" }
         ],
         bFilter: false,
         bInfo: false,
@@ -103,7 +124,7 @@ $.getJSON(API)
         $.each(data, function (i, p) {
                 $('#CardName').append($('<option class="dropdown-item" id="CardName" name="CardName">> </option>').val(p.Cardname).html(p.Cardname));
             });
-      });
+      });   
 
 function objectifyForm(formArray) 
     {
