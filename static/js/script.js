@@ -124,7 +124,15 @@ $.getJSON(API)
         $.each(data, function (i, p) {
                 $('#CardName').append($('<option class="dropdown-item" id="CardName" name="CardName">> </option>').val(p.Cardname).html(p.Cardname));
             });
-      });   
+      });  
+      
+var API = "https://projectdividas.herokuapp.com//GetDebtsSum/07/2020";
+$.getJSON(API)
+        .done(function(data){    
+        $.each(data, function (i, p) {
+                $('#SumValues').append($('<h1> </h1>').val(p.Sum).html(p.Sum.toFixed(2)));
+            });
+    });  
 
 function objectifyForm(formArray) 
     {
