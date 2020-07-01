@@ -85,7 +85,7 @@ function onSubmitCard( form ){
 
 function onSubmitCardValues( form ){
     var data = objectifyForm(form);
-    fetch("http://127.0.0.1:5000//AddValuesCard", {
+    fetch("https://projectdividas.herokuapp.com//AddValuesCard", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),
