@@ -180,11 +180,12 @@
 					</div>
 					<div class="modal-body">
 						<form onsubmit='return onSubmitCardValues(this)'>
-							<p></p>
-							<div class="form-group mr-2">
-								<label class="sr-only" for="inputNameDebts" id="inputNameDebts">Nome da dívida</label>
-								<input class="form-control" name="Name" placeholder="Nome da dívida">
+							<div class="dropdown">
+								<select class="btn btn-secondary dropdown-toggle" id="selectSkill">
+								<option class="dropdown-item" value="" disabled="disabled"  style="display:none" selected="selected">Selecione o cartão</option>
+								</select>
 							</div>
+							<p></p>
 							<div class="form-group mr-2">
 								<label class="sr-only" for="inputValue">Valor</label>
 								<input class="form-control" name="Valor" type='number' step='0.01' placeholder="Valor da dívida">
@@ -193,13 +194,19 @@
 								<label class="sr-only" for="inputDate">Data Compra</label>
 								<input class="form-control" name="DataCompra" type="date" placeholder="Data da Compra">
 							</div>
+							<p></p>
 							<div class="dropdown">
-								<select class="btn btn-secondary dropdown-toggle" name="selectname" id="selectname" class="form-control select2"></select>
+								<select class="btn btn-secondary dropdown-toggle" id="TipoDeDividaCartao" name="TipoDeDividaCartao" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<option class="dropdown-item" name="TipoDeDividaCartao" value="" disabled="disabled"  style="display:none" selected="selected">Selecione Tipo de dívida</option>
+									<option class="dropdown-item" id="simples" name="TipoDeDividaCartao" value="simples">Simples</option>
+									<option class="dropdown-item" id= "fixa" name="TipoDeDividaCartao" value="fixa">Fixa</option>
+									<option class="dropdown-item" id="parcelada" name="TipoDeDividaCartao" value="parcelada">Parcelada</option>
+								</select>
 							</div>
 							<p></p>
 							<div class="form-group mr-2">
 								<label class="sr-only" for="inputPlan">Quantidade de parcelas</label>
-								<input class="form-control" name="QuantidadeParcelas" id="QuantidadeParcelas" type="number" placeholder="Quantidade de parcelas">
+								<input class="form-control" name="QuantidadeParcelasCartao" id="QuantidadeParcelasCartao" type="number" placeholder="Quantidade de parcelas">
 							</div>
 							<button type='submit' class="btn btn-primary">Enviar</button>
 						  </form>						  

@@ -46,11 +46,11 @@ $(function () {
 });
 
 $(function () {
-    $("#exampleCheck1").change(function () {
-        if ($(this).val() == true) {
-            $("#inputNameDebts").show();
+    $("#TipoDeDividaCartao").change(function () {
+        if ($(this).val() == "parcelada") {
+            $("#QuantidadeParcelasCartao").show();
         } else {
-            $("#inputNameDebts").hide();
+            $("#QuantidadeParcelasCartao").hide();
         }
     });
 });
@@ -85,7 +85,7 @@ function onSubmitCard( form ){
 
 function onSubmitCardValues( form ){
     var data = objectifyForm(form);
-    fetch("https://projectdividas.herokuapp.com//AddValuesCard", {
+    fetch("http://127.0.0.1:5000//AddValuesCard", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),
@@ -95,19 +95,16 @@ function onSubmitCardValues( form ){
       .catch((error) => {
       console.log(error)})
       alert("Valor adicionado ao cartão!")
-  }
+}
 
+var API = "https://projectdividas.herokuapp.com//GetCardsNames";
+$.getJSON(API)
+        .done(function(data){    
+        $.each(data, function (i, p) {
+                $('#selectSkill').append($('<option>name="CardName"</option>').val(p.Cardname).html(p.Cardname));
+            });
+      });
 
-$(document).ready(function() {
-    $('#selectname').select2({
-        ajax: {
-            url: "https://projectdividas.herokuapp.com//GetCardsNames",
-            dataType: 'json',
-        },
-    });
-});
-  
-  
 function objectifyForm(formArray) 
     {
         var returnArray = {};
