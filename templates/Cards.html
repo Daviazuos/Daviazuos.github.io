@@ -34,6 +34,7 @@
 			  
 			  <div class="list-group list-group-flush">
 				<a href="../index.html" class="list-group-item bg-dark">Home</a>
+				<a href="#" class="list-group-item bg-dark">Meses</a>
 				<a href="Cards.html" class="list-group-item bg-dark">Cartões</a>
 			  </div>
 			</div>
@@ -77,6 +78,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="modal-title" id="ModalCartaoLabel">Adicionar Dívidas</h4>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 								<div class="modal-body">
 									<form onsubmit='return onSubmitCard(this)'>
@@ -94,11 +96,8 @@
 											<input class="form-control" type="number" min="1" max="31" name="Fechamento" step="1" placeholder="Dia Fechamento" data-bind="value:replyNumber" />
 										</div>
 										
-										<button type='submit' class="btn btn-primary">Enviar</button>
+										<button type='submit' class="btn btn-dark">Enviar</button>
 									</form>						  
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
