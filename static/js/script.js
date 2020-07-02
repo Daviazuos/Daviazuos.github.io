@@ -118,6 +118,7 @@ function onSubmitCardValues( form ){
       alert("Valor adicionado ao cartão!")
 }
 
+
 var API = "https://projectdividas.herokuapp.com//GetCardsNames";
 $.getJSON(API)
         .done(function(data){    
@@ -130,7 +131,15 @@ var API = "https://projectdividas.herokuapp.com//GetDebtsSum/07/2020";
 $.getJSON(API)
         .done(function(data){    
         $.each(data, function (i, p) {
-                $('#SumValues').append($('<h1> </h1>').val(p.Sum).html(p.Sum.toFixed(2)));
+                $('#SumValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum.toFixed(2)));
+            });
+    });  
+
+var API = "https://projectdividas.herokuapp.com//GetCardsSum/07/2020";
+$.getJSON(API)
+        .done(function(data){    
+        $.each(data, function (i, p) {
+                $('#SumCardValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum.toFixed(2)));
             });
     });  
 
