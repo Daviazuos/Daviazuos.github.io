@@ -126,7 +126,7 @@ $.getJSON(API)
                 $('#CardName').append($('<option class="dropdown-item" id="CardName" name="CardName">> </option>').val(p.Cardname).html(p.Cardname));
             });
       });  
-      
+    
 var API = "https://projectdividas.herokuapp.com//GetDebtsSum/07/2020";
 $.getJSON(API)
         .done(function(data){    
@@ -135,8 +135,8 @@ $.getJSON(API)
             });
     });  
 
-var API = "https://projectdividas.herokuapp.com//GetCardsSum/07/2020";
-$.getJSON(API)
+var APICard = "https://projectdividas.herokuapp.com//GetCardsSum/07/2020";
+$.getJSON(APICard)
         .done(function(data){    
         $.each(data, function (i, p) {
                 $('#SumCardValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum.toFixed(2)));

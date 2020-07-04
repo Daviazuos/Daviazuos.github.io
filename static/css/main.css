@@ -1,13 +1,27 @@
 .CardDebts {
   margin-top: 50px;
   margin-bottom: 100px;
-  margin-right: 50px;
-  margin-left: 80px;
+  margin-right: 5px;
+  margin-left: 30px;
 }
 
 .CardCard {
   margin-top: 50px;
   margin-bottom: 100px;
-  margin-right: 150px;
-  margin-left: 80px;
+  margin-right: 5px;
+  margin-left: 30px;
+}
+
+.CardCard1 {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  margin-right: 5px;
+  margin-left: 30px;
+}
+
+.CardCard2 {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  margin-right: 5px;
+  margin-left: 30px;
 }
