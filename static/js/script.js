@@ -150,7 +150,7 @@ $.getJSON(APICard)
             });
     });  
 
-var APISum = "http://127.0.0.1:5000/GetAllDebtsSum/07/2020";
+var APISum = "https://projectdividas.herokuapp.com//GetAllDebtsSum/07/2020";
 $.getJSON(APISum)
         .done(function(data){    
         $.each(data, function (i, p) {
