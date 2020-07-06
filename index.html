@@ -19,7 +19,9 @@
 	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" ></script>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+
 	<script src="static/js/script.js"></script>
 
 	<title>Projeto Dividas</title>
@@ -58,60 +60,67 @@
 					</ul>
 				  </div>
 				</nav>
-
-				<div class="container-fluid">
-					<div class="row">
-						<div class="CardDebts">  
-							<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-								<div class="card-body">
-									<div class="col mt-0">
-										<h5 class="card-title">Total Dívidas</h5>
-										<h1 class="display-5 mt-1 mb-3" id="SumValues"></h1>
-										<button type="button" class="btn btn-light btn" data-toggle="modal" data-target="#ModalTable">
-											<span class="material-icons">format_align_justify</span>
-										</button>
-									</div>									
-								</div>
+				<div class="container-fluid mt-n10">
+					<div class="card mb-4">
+						<div class="card-header">
+							Geral Anual
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="CardCard1"> 
+									<div class="card border-primary mb-3" style="max-width: 18rem;">
+										<div class="card-body">
+											<div class="col mt-0">
+												<h5 class="card-title">Total Geral</h5>
+												<h1 class="display-5 mt-1 mb-3" id="SumAllValues"></h1>
+											</div>							
+										</div>
+									</div>
+								</div>	
+								<div class="CardCard1"> 
+									<div class="card">
+										<div class="card-body">
+											<div class="col mt-3">
+												<canvas id="chLine"></canvas>	
+											</div>								
+										</div>
+									</div>
+								</div>								
 							</div>
 						</div>
-						
-						<div class="CardCard"> 
-							<div class="card border-primary mb-3" style="max-width: 18rem;">
-								<div class="card-body">
-									<div class="col mt-0">
-										<h5 class="card-title">Total Cartões</h5>
-										<h1 class="display-5 mt-1 mb-3" id="SumCardValues"></h1>
-										<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTableCard">
-											<span class="material-icons">format_align_justify</span>
-										</button>
-									</div>									
-								</div>
-							</div>
+					</div>
+					<div class="card mb-4">
+						<div class="card-header">
+							Geral Mês Atual
 						</div>
-						<div class="CardCard1"> 
-							<div class="card border-primary mb-3" style="max-width: 18rem;">
-								<div class="card-body">
-									<div class="col mt-0">
-										<h5 class="card-title">Total Geral</h5>
-										<h1 class="display-5 mt-1 mb-3" id="SumAllValues"></h1>
-										<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTableCard">
-											<span class="material-icons">format_align_justify</span>
-										</button>
-									</div>									
+						<div class="card-body">
+							<div class="row justify-content-md-start">
+								<div class="CardCard"> 
+									<div class="card border-primary mb-3" style="max-width: 18rem;">
+										<div class="card-body">
+											<div class="col mt-0">
+												<h5 class="card-title">Total Cartões</h5>
+												<h1 class="display-5 mt-1 mb-3" id="SumCardValues"></h1>
+												<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTableCard">
+													<span class="material-icons">format_align_justify</span>
+												</button>
+											</div>									
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="CardCard2"> 
-							<div class="card border-primary mb-3" style="max-width: 18rem;">
-								<div class="card-body">
-									<div class="col mt-0">
-										<h5 class="card-title">Total Recebido</h5>
-										<h1 class="display-5 mt-1 mb-3" id="SumCardValues">R$ 525.00</h1>
-										<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTableCard">
-											<span class="material-icons">format_align_justify</span>
-										</button>
-									</div>									
-								</div>
+								<div class="CardDebts">  
+									<div class="card border-primary mb-3">
+										<div class="card-body">
+											<div class="col mt-0">
+												<h5 class="card-title">Total Dívidas</h5>
+												<h1 class="display-5 mt-1 mb-3" id="SumValues"></h1>
+												<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTable">
+													<span class="material-icons">format_align_justify</span>
+												</button>
+											</div>									
+										</div>
+									</div>
+								</div>	
 							</div>
 						</div>
 					</div>
@@ -313,11 +322,5 @@
 				
 			</div>
 		</div>
-		<script>
-			$("#menu-toggle").click(function(e) {
-			  e.preventDefault();
-			  $("#wrapper").toggleClass("toggled");
-			});
-		</script>
 	</body>
 </html> 
