@@ -168,7 +168,7 @@ function objectifyForm(formArray)
         return returnArray;
     }
 
-var APISumDebtsValues = "http://127.0.0.1:5000/GetMonthDebtsSum/2020";
+var APISumDebtsValues = "https://projectdividas.herokuapp.com//GetMonthDebtsSum/2020";
 
 fetch(APISumDebtsValues).then(res => 
                         res.json()).then((out) =>
