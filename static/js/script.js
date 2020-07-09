@@ -168,17 +168,20 @@ function objectifyForm(formArray)
         return returnArray;
     }
 
+var APISumDebtsValues = "http://127.0.0.1:5000/GetMonthDebtsSum/2020";
 
-$(function () {
+fetch(APISumDebtsValues).then(res => 
+                        res.json()).then((out) =>
+                        $(function () {
     // chart colors
     var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
-
+    console.log()
     /* large line chart */
     var chLine = document.getElementById("chLine");
     var chartData = {
-    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
-    datasets: [{
-        data: [1565.51, 2511.00, 1845.00, 1519.80, 1854.21, 1515.55, 2365.15,1519.80, 1854.21, 1515.55, 2365.15, 1511.00],
+    labels: out[0]['month'],
+        datasets: [{
+        data: out[0]['sum'],
         backgroundColor: colors[3],
         borderColor: colors[0],
         borderWidth: 4,
@@ -204,4 +207,4 @@ $(function () {
     }
     });
     }
-})
+}))
