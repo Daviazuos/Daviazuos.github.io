@@ -85,7 +85,7 @@ $(function () {
 
 function onSubmit( form ){
     var data = objectifyForm(form);
-    fetch("https://projectdividas.herokuapp.com//AddSimple", {
+    fetch("https://projectdividas.herokuapp.com//AddDebts", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),
@@ -168,7 +168,7 @@ function objectifyForm(formArray)
         return returnArray;
     }
 
-var APISumDebtsValues = "https://projectdividas.herokuapp.com//GetMonthDebtsSum/2020";
+var APISumDebtsValues = "https://projectdividas.herokuapp.com//GetMonthSum/2020";
 
 fetch(APISumDebtsValues).then(res => 
                         res.json()).then((out) =>
