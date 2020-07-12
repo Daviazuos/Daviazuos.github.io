@@ -6,8 +6,8 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "name" },
-            { "data": "qtdparcelas" },
             { "data": "numeroparcelas" },
+            { "data": "parcela" },
             { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "vencimento" },
             { "data": "TipoDeDivida" },
@@ -34,12 +34,12 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "name" },
-            { "data": "numeroparcelas" },
+            { "data": "parcela" },
             { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "vencimento" },
             { "data": "TipoDeDivida" },
             { "data": "Status" },
-            { "data": "qtdparcelas" },
+            { "data": "numeroparcelas" },
             { "data": "Descricao" }
         ],
         bFilter: false,
@@ -140,7 +140,7 @@ var API = "https://projectdividas.herokuapp.com//GetDebtsSum/07/2020";
 $.getJSON(API)
         .done(function(data){    
         $.each(data, function (i, p) {
-                $('#SumValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum.toFixed(2)));
+                $('#SumValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum));
             });
     });  
 
@@ -148,7 +148,7 @@ var APICard = "https://projectdividas.herokuapp.com//GetCardsSum/07/2020";
 $.getJSON(APICard)
         .done(function(data){    
         $.each(data, function (i, p) {
-                $('#SumCardValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum.toFixed(2)));
+                $('#SumCardValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum));
             });
     });  
 
@@ -156,7 +156,7 @@ var APISum = "https://projectdividas.herokuapp.com/GetAllDebtsSum/07/2020";
 $.getJSON(APISum)
         .done(function(data){    
         $.each(data, function (i, p) {
-                $('#SumAllValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum.toFixed(2)));
+                $('#SumAllValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum));
             });
     });  
 
