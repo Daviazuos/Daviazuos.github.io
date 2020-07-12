@@ -6,8 +6,9 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "name" },
-            { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "qtdparcelas" },
             { "data": "numeroparcelas" },
+            { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "vencimento" },
             { "data": "TipoDeDivida" },
             { "data": "Status" }
@@ -33,11 +34,12 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "name" },
-            { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "numeroparcelas" },
+            { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "vencimento" },
             { "data": "TipoDeDivida" },
             { "data": "Status" },
+            { "data": "qtdparcelas" },
             { "data": "Descricao" }
         ],
         bFilter: false,
@@ -150,7 +152,7 @@ $.getJSON(APICard)
             });
     });  
 
-var APISum = "https://projectdividas.herokuapp.com//GetAllDebtsSum/07/2020";
+var APISum = "https://projectdividas.herokuapp.com/GetAllDebtsSum/07/2020";
 $.getJSON(APISum)
         .done(function(data){    
         $.each(data, function (i, p) {
