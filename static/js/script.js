@@ -75,7 +75,7 @@ $(function () {
 
 $(function () {
     $("#TipoDeDividaCartao").change(function () {
-        if ($(this).val() == "parcelada") {
+        if ($(this).val() == "Parcelada") {
             $("#QuantidadeParcelasCartao").show();
         } else {
             $("#QuantidadeParcelasCartao").hide();
@@ -113,7 +113,8 @@ function onSubmitCard( form ){
 
 function onSubmitCardValues( form ){
     var data = objectifyForm(form);
-    fetch("https://projectdividas.herokuapp.com//AddValuesCard", {
+    console.log(JSON.stringify(data))
+    fetch("http://127.0.0.1:5000//AddValuesCard", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data),
