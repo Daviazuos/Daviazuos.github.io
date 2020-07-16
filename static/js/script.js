@@ -78,9 +78,9 @@ $(function () {
 $(function () {
     $("#TipoDeDividaCartao").change(function () {
         if ($(this).val() == "Parcelada") {
-            $("#QuantidadeParcelasCartao").show();
+            $("#QuantidadeDeParcelasCartao").show();
         } else {
-            $("#QuantidadeParcelasCartao").hide();
+            $("#QuantidadeDeParcelasCartao").hide();
         }
     });
 });
@@ -141,7 +141,7 @@ var API = "https://projectdividas.herokuapp.com//GetDebtsSum/07/2020";
 $.getJSON(API)
         .done(function(data){    
         $.each(data, function (i, p) {
-                $('#SumValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum));
+                $('#SumValues').append($('<h1></h1>').val(p.Sum).html("R$ "+parseFloat(p.Sum).toFixed(2)));
             });
     });  
 
@@ -149,7 +149,7 @@ var APICard = "https://projectdividas.herokuapp.com//GetCardsSum/07/2020";
 $.getJSON(APICard)
         .done(function(data){    
         $.each(data, function (i, p) {
-                $('#SumCardValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum));
+                $('#SumCardValues').append($('<h1></h1>').val(p.Sum).html("R$ "+parseFloat(p.Sum).toFixed(2)));
             });
     });  
 
@@ -157,7 +157,7 @@ var APISum = "https://projectdividas.herokuapp.com/GetAllDebtsSum/07/2020";
 $.getJSON(APISum)
         .done(function(data){    
         $.each(data, function (i, p) {
-                $('#SumAllValues').append($('<h1></h1>').val(p.Sum).html("R$ "+p.Sum));
+                $('#SumAllValues').append($('<h1></h1>').val(p.Sum).html("R$ "+parseFloat(p.Sum).toFixed(2)));
             });
     });  
 
@@ -177,7 +177,7 @@ fetch(APISumDebtsValues).then(res =>
                         res.json()).then((out) =>
                         $(function () {
     // chart colors
-    var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
+    var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d', '#FF0000'];
     console.log()
     /* large line chart */
     var chLine = document.getElementById("chLine");
@@ -185,11 +185,17 @@ fetch(APISumDebtsValues).then(res =>
     labels: out[0]['month'],
         datasets: [{
         data: out[0]['sum'],
-        backgroundColor: colors[3],
-        borderColor: colors[0],
+        backgroundColor: colors[6],
+        borderColor: colors[5],
         borderWidth: 4,
         pointBackgroundColor: colors[0]
-    }]
+    },{
+        data: [3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00],
+        backgroundColor: colors[3],
+        borderColor: colors[1],
+        borderWidth: 4,
+        pointBackgroundColor: colors[3]
+    }],
     };
 
     if (chLine) {
