@@ -108,7 +108,7 @@ function Login() {
   var senha= document.getElementById('password').value;
   senha=senha.toLowerCase();
   if (usuario=="admin" && senha=="admin") {
-    window.location="index.html";
+    window.location="homepage.html";
     done=1;
   }
   if (done==0) { alert("Dados incorretos, tente novamente"); }
