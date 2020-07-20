@@ -1,23 +1,39 @@
-$(document).ready(function() {
-    $('#getDebts').DataTable( {
-        "ajax": {
-            "url": "https://projectdividas.herokuapp.com//Simple",
-            "dataSrc": ""
-        },
-        "columns": [
-            { "data": "name" },
-            { "data": "numeroparcelas" },
-            { "data": "parcela" },
-            { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "vencimento" },
-            { "data": "TipoDeDivida" },
-            { "data": "Status" }
-        ],
-        bFilter: false,
-        bInfo: false,
-        paging: false
-    } );
-})
+$(document).ready(function(){
+    $.getJSON("https://projectdividas.herokuapp.com//Simple", function(data){
+    var concept_list= '';
+    $.each(data, function(key, value){
+        concept_list += '<tr>';
+        concept_list += '<td>'+value.name+'</td>';
+        concept_list += '<td>'+parseFloat(value.valor).toFixed(2)+'</td>';
+        concept_list += '<td>'+value.numeroparcelas+'</td>';
+        concept_list += '<td>'+value.parcela+'</td>';
+        concept_list += '<td>'+value.vencimento+'</td>';
+        concept_list += '<td>'+value.TipoDeDivida+'</td>';
+        concept_list += '<td>'+value.Status+'</td>';
+        concept_list += '</tr>';
+    });
+    $('#GetSimple').append(concept_list);
+      });
+    });
+
+
+$(document).ready(function(){
+    $.getJSON("https://projectdividas.herokuapp.com//Simple", function(data){
+    var concept_list= '';
+    $.each(data, function(key, value){
+        concept_list += '<tr>';
+        concept_list += '<td>'+value.name+'</td>';
+        concept_list += '<td>'+parseFloat(value.valor).toFixed(2)+'</td>';
+        concept_list += '<td>'+value.numeroparcelas+'</td>';
+        concept_list += '<td>'+value.parcela+'</td>';
+        concept_list += '<td>'+value.vencimento+'</td>';
+        concept_list += '<td>'+value.TipoDeDivida+'</td>';
+        concept_list += '<td>'+value.Status+'</td>';
+        concept_list += '</tr>';
+    });
+    $('#CardValues').append(concept_list);
+        });
+    });
 
 $(document).ready(function() {
     $("#menu-toggle").click(function(e) {
@@ -76,14 +92,27 @@ $(function () {
 });
 
 $(function () {
-    $("#TipoDeDividaCartao").change(function () {
-        if ($(this).val() == "Parcelada") {
-            $("#QuantidadeDeParcelasCartao").show();
+    $("#TipoDeDivida").change(function () {
+        if ($(this).val() == "parcelada") {
+            $("#QuantidadeParcelas").show();
         } else {
-            $("#QuantidadeDeParcelasCartao").hide();
+            $("#QuantidadeParcelas").hide();
         }
     });
 });
+
+function Login() {
+  var done=0;
+  var usuario = document.getElementById('username').value;
+  usuario=usuario.toLowerCase();
+  var senha= document.getElementById('password').value;
+  senha=senha.toLowerCase();
+  if (usuario=="admin" && senha=="admin") {
+    window.location="index.html";
+    done=1;
+  }
+  if (done==0) { alert("Dados incorretos, tente novamente"); }
+}
 
 function onSubmit( form ){
     var data = objectifyForm(form);

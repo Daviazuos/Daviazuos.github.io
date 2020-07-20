@@ -27,322 +27,36 @@
 	<script src="static/js/script.js"></script>
 
 	<title>Web Debts</title>
-
 </head>
 
-<html>
-	<body>
-		<div class="d-flex" id="wrapper">
-			<div class="bg-light border-right" id="sidebar-wrapper">
-			  <div class="sidebar-heading">Web Debts</div>
-			  
-			  <div class="list-group list-group-flush">
-				<a href="index.html" class="list-group-item bg-light">Home</a>
-				<a href="#" class="list-group-item bg-light">Meses</a>				
-				<a href="templates/Cards.html" class="list-group-item bg-light">Cartões</a>
-			  </div>
-			</div>
-
-			<div id="page-content-wrapper">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-				  <button class="btn btn-default" id="menu-toggle"></button>
-		  
-				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				  </button>
-		  
-				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-					  <li class="nav-item active">
-						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="#">Login</a>
-					  </li> 
-					</ul>
-				  </div>
-				</nav>
-				<div class="container-fluid mt-n10">
-					<div class="card mb-4">
-						<div class="card-header">
-							Geral Anual
-						</div>
-						<div class="card-body">
-							<div class="row">	
-								<div class="CardCard1"> 
-									<div class="card">
-										<div class="card-body">
-											<div class="col mt-3">
-												<h5 class="card-title">2020</h5>
-												<canvas id="chLine"></canvas>	
-											</div>								
-										</div>
-									</div>
-								</div>								
-							</div>
-						</div>
-					</div>
-					<div class="card mb-4">
-						<div class="card-header">
-							Geral Mês Atual
-						</div>
-						<div class="card-body">
-							<div class="row justify-content-md-start">
-								<div class="CardCard1"> 
-									<div class="card border-primary mb-3" style="max-width: 18rem;">
-										<div class="card-body">
-											<div class="col mt-0">
-												<h5 class="card-title">Total Geral</h5>
-												<h1 class="display-5 mt-1 mb-3" id="SumAllValues"></h1>
-											</div>							
-										</div>
-									</div>
-								</div>	
-								<div class="CardCard1"> 
-									<div class="card border-primary mb-3" style="max-width: 18rem;">
-										<div class="card-body">
-											<div class="col mt-0">
-												<h5 class="card-title">Total Recebido</h5>
-												<h1 class="display-5 mt-1 mb-3" id="SumAllValues">R$ 3800.00</h1>
-											</div>							
-										</div>
-									</div>
-								</div>	
-							</div>
-						</div>
-					</div>
-					<div class="card mb-4">
-						<div class="card-header">
-							Geral Mês Analítico
-						</div>
-						<div class="card-body">
-							<div class="row justify-content-md-start">
-								<div class="CardCard"> 
-									<div class="card border-primary mb-3" style="max-width: 18rem;">
-										<div class="card-body">
-											<div class="col mt-0">
-												<h5 class="card-title">Total Cartões</h5>
-												<h1 class="display-5 mt-1 mb-3" id="SumCardValues"></h1>
-												<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTableCard">
-													<span class="material-icons">format_align_justify</span>
-												</button>
-											</div>									
-										</div>
-									</div>
-								</div>
-								<div class="CardDebts">  
-									<div class="card border-primary mb-3">
-										<div class="card-body">
-											<div class="col mt-0">
-												<h5 class="card-title">Total Dívidas</h5>
-												<h1 class="display-5 mt-1 mb-3" id="SumValues"></h1>
-												<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTable">
-													<span class="material-icons">format_align_justify</span>
-												</button>
-											</div>									
-										</div>
-									</div>
-								</div>	
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="modal fade bs-example-modal-lg" id="ModalTable" tabindex="-1" role="dialog" aria-labelledby="ModalTableLabel">
-					<div class="modal-dialog modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title" id="ModalTableLabel">Dívidas Analítico</h4>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							</div>
-							<div class="modal-body">
-								<div class="table-responsive">
-									<table id="getDebts" class="table">
-										<thead>
-											<tr>
-											<th scope="col">Dívida</th>
-											<th scope="col">Plano</th>
-											<th scope="col">Parcela</th>
-											<th scope="col">Valor</th>
-											<th scope="col">Vencimento</th>
-											<th scope="col">Tipo</th>
-											<th scope="col">Status</th>
-											</tr>
-										</thead>
-									</table>
-								</div>						  
-							</div>
-							<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#exampleModal">
-								<span class="material-icons">add_box</span>
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="modal fade bs-example-modal-lg" id="ModalTableCard" tabindex="-1" role="dialog" aria-labelledby="ModalTableCardLabel">
-					<div class="modal-dialog modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title" id="ModalTableCardLabel">Cartões Analítico</h4>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							</div>
-							<div class="modal-body">
-								<div class="table-responsive">
-									<table id="getCardDebts" class="table">
-										<thead>
-											<tr>
-											<th scope="col">Cartão</th>
-											<th scope="col">Parcela</th>
-											<th scope="col">Valor</th>
-											<th scope="col">Vencimento</th>
-											<th scope="col">Tipo</th>
-											<th scope="col">Status</th>
-											<th scope="col">Plano</th>
-											<th scope="col">Descricao</th>
-											</tr>
-										</thead>
-									</table>
-								</div>						  
-							</div>
-							<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalCartaoValor">
-								<span class="material-icons">add_box</span>
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title" id="exampleModalLabel">Adicionar Dívidas</h4>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							</div>
-							<div class="modal-body">
-								<form onsubmit='return onSubmit(this)'>
-									<p></p>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputNameDebts" id="inputNameDebts">Nome da dívida</label>
-										<input class="form-control" name="Name" placeholder="Nome da dívida">
-									</div>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputValue">Valor</label>
-										<input class="form-control" name="Valor" type='number' step='0.01' placeholder="Valor da dívida">
-									</div>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputDate">Data</label>
-										<input class="form-control" name="Vencimento" type="date" placeholder="Data da dívida">
-									</div>
-									<div class="dropdown">
-										<select class="btn btn-secondary dropdown-toggle" id="TipoDeDivida" name="TipoDeDivida" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<option class="dropdown-item" name="TipoDeDivida" value="" disabled="disabled"  style="display:none" selected="selected">Selecione Tipo de dívida</option>
-											<option class="dropdown-item" id="simples" name="TipoDeDivida" value="simples">Simples</option>
-											<option class="dropdown-item" id= "fixa" name="TipoDeDivida" value="fixa">Fixa</option>
-											<option class="dropdown-item" id="parcelada" name="TipoDeDivida" value="parcelada">Parcelada</option>
-										</select>
-									</div>
-									<p></p>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputPlan">Quantidade de parcelas</label>
-										<input class="form-control" name="QuantidadeParcelas" id="QuantidadeParcelas" type="number" placeholder="Quantidade de parcelas">
-									</div>
-									<button type='submit' class="btn btn-dark">Enviar</button>
-								</form>						  
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title" id="exampleModalLabel">Adicionar Dívidas</h4>
-								<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-							</div>
-							<div class="modal-body">
-								<form onsubmit='return onSubmit(this)'>
-									<p></p>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputNameDebts" id="inputNameDebts">Nome da dívida</label>
-										<input class="form-control" name="Name" placeholder="Nome da dívida">
-									</div>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputValue">Valor</label>
-										<input class="form-control" name="Valor" type='number' step='0.01' placeholder="Valor da dívida">
-									</div>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputDate">Data</label>
-										<input class="form-control" name="Vencimento" type="date" placeholder="Data da dívida">
-									</div>
-									<div class="dropdown">
-										<select class="btn btn-secondary dropdown-toggle" id="TipoDeDivida" name="TipoDeDivida" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<option class="dropdown-item" name="TipoDeDivida" value="" disabled="disabled"  style="display:none" selected="selected">Selecione Tipo de dívida</option>
-											<option class="dropdown-item" id="simples" name="TipoDeDivida" value="simples">Simples</option>
-											<option class="dropdown-item" id= "fixa" name="TipoDeDivida" value="fixa">Fixa</option>
-											<option class="dropdown-item" id="parcelada" name="TipoDeDivida" value="parcelada">Parcelada</option>
-										</select>
-									</div>
-									<p></p>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputPlan">Quantidade de parcelas</label>
-										<input class="form-control" name="QuantidadeParcelas" id="QuantidadeParcelas" type="number" placeholder="Quantidade de parcelas">
-									</div>
-									<button type='submit' class="btn btn-dark">Enviar</button>
-								</form>						  
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="modal fade" id="ModalCartaoValor" tabindex="-1" role="dialog" aria-labelledby="ModalCartaoValorLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title" id="ModalCartaoValorLabel">Adicionar Valor ao cartão</h4>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							</div>
-							<div class="modal-body">
-								<form onsubmit='return onSubmitCardValues(this)'>
-									<div class="dropdown">
-										<select class="btn btn-secondary dropdown-toggle" id="CardName" name="CardName"  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<option class="dropdown-item" value="" disabled="disabled"  style="display:none" selected="selected">Selecione o cartão</option>
-										</select>
-									</div>
-									<p></p>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputValue">Valor</label>
-										<input class="form-control" name="Valor" type='number' step='0.01' placeholder="Valor da dívida">
-									</div>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputDate">Data Compra</label>
-										<input class="form-control" name="DataCompra" type="date" placeholder="Data da Compra">
-									</div>
-									<p></p>
-									<div class="dropdown">
-										<select class="btn btn-secondary dropdown-toggle" id="TipoDeDividaCartao" name="TipoDeDividaCartao" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<option class="dropdown-item" name="TipoDeDividaCartao" value="" disabled="disabled"  style="display:none" selected="selected">Selecione Tipo de dívida</option>
-											<option class="dropdown-item" id="simples" name="TipoDeDividaCartao" value="simples">Simples</option>
-											<option class="dropdown-item" id= "fixa" name="TipoDeDividaCartao" value="fixa">Fixa</option>
-											<option class="dropdown-item" id="Parcelada" name="TipoDeDividaCartao" value="Parcelada">Parcelada</option>
-										</select>
-									</div>
-									<p></p>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputPlan">Quantidade de parcelas</label>
-										<input class="form-control" name="QuantidadeDeParcelasCartao" id="QuantidadeDeParcelasCartao" type="number" placeholder="Quantidade de parcelas">
-									</div>
-									<div class="form-group mr-2">
-										<label class="sr-only" for="inputDescription" id="inputDescription">Descrição</label>
-										<input class="form-control" name="Descricao" placeholder="Descrição">
-									</div>
-									<button type='submit' class="btn btn-dark">Enviar</button>
-								</form>						  
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
-</html> 
+<body>
+    <div id="login">
+        <h3 class="text-center text-white pt-5">Login form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                            <h3 class="text-center text-info">Login</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label><br>
+                                <input type="text" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me" class="text-info"><span>Remember me</span>�<span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input type="button" onclick="Login()" class="btn btn-info btn-md" value="Login">
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a href="#" class="text-info">Register here</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
