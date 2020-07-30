@@ -36,6 +36,22 @@ $(document).ready(function(){
     });
 
 $(document).ready(function(){
+    $.getJSON("https://projectdividas.herokuapp.com/07/2020", function(data){
+    var concept_list= '';
+    $.each(data, function(key, value){
+        concept_list += '<tr>';
+        concept_list += '<td>'+value.Cardname+'</td>';
+        concept_list += '<td>'+parseFloat(value.Sum).toFixed(2)+'</td>';
+        concept_list += '<td>'+value.DueDate+'</td>';
+        concept_list += '<td>'+'<button class="btn btn-dark btn-md" data-toggle="modal" data-target="#CardModal" value='+value.Cardname+'>Analítico</button>'+'</td>';
+        concept_list += '</tr>';
+    });
+    console.log(concept_list)
+    $('#getSumCardDebts').append(concept_list);
+        });
+    });
+
+$(document).ready(function(){
     $.getJSON("https://projectdividas.herokuapp.com//GetMonthSum/2020", function(data){
     var newList = [];
 
@@ -49,7 +65,7 @@ $(document).ready(function(){
         concept_list += '<tr>';
         concept_list += '<td>'+value[0]+'</td>';
         concept_list += '<td>'+parseFloat(value[1]).toFixed(2)+'</td>';
-        concept_list += '<td>'+"<button class='btn btn-dark btn-md'>Analítico</button>"+'</td>';
+        concept_list += '<td>'+'<button class="btn btn-dark btn-md">Analítico</button>'+'</td>';
         concept_list += '</tr>';
     });
     $('#MonthValues').append(concept_list);
