@@ -35,6 +35,27 @@ $(document).ready(function(){
         });
     });
 
+$(document).ready(function(){
+    $.getJSON("https://projectdividas.herokuapp.com//GetMonthSum/2020", function(data){
+    var newList = [];
+
+    for(var meses in data[0].month) 
+    {  
+        newList.push([data[0].month[meses],data[0].sum[meses]])      
+    }
+    
+    var concept_list= '';
+    $.each(newList, function(key, value){
+        concept_list += '<tr>';
+        concept_list += '<td>'+value[0]+'</td>';
+        concept_list += '<td>'+parseFloat(value[1]).toFixed(2)+'</td>';
+        concept_list += '<td>'+"<button class='btn btn-dark btn-md'>Analítico</button>"+'</td>';
+        concept_list += '</tr>';
+    });
+    $('#MonthValues').append(concept_list);
+        });
+    });
+
 $(document).ready(function() {
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -189,6 +210,20 @@ $.getJSON(APISum)
                 $('#SumAllValues').append($('<h1></h1>').val(p.Sum).html("R$ "+parseFloat(p.Sum).toFixed(2)));
             });
     });  
+
+var APIAllSum = "https://projectdividas.herokuapp.com//GetMonthSum/2020";
+
+$.getJSON(APIAllSum)
+    .done(function(data){  
+        var newList = parseFloat(0)
+        for(var meses in data[0].month) 
+        {  
+            var value = parseFloat(data[0].sum[meses])
+            newList += value
+        }
+    $('#SumAll').append($('<h1></h1>').val(newList).html("R$ "+newList.toFixed(2)));
+    });  
+    
 
 function objectifyForm(formArray) 
     {
