@@ -4,7 +4,7 @@ $(document).ready(function(){
     $.each(data, function(key, value){
         concept_list += '<tr>';
         concept_list += '<td>'+value.name+'</td>';
-        concept_list += '<td>'+parseFloat(value.valor).toFixed(2)+'</td>';
+        concept_list += '<td>R$ '+parseFloat(value.valor).toFixed(2)+'</td>';
         concept_list += '<td>'+value.numeroparcelas+'</td>';
         concept_list += '<td>'+value.parcela+'</td>';
         concept_list += '<td>'+value.vencimento+'</td>';
@@ -23,7 +23,7 @@ $(document).ready(function(){
     $.each(data, function(key, value){
         concept_list += '<tr>';
         concept_list += '<td>'+value.name+'</td>';
-        concept_list += '<td>'+parseFloat(value.valor).toFixed(2)+'</td>';
+        concept_list += '<td>R$ '+parseFloat(value.valor).toFixed(2)+'</td>';
         concept_list += '<td>'+value.numeroparcelas+'</td>';
         concept_list += '<td>'+value.parcela+'</td>';
         concept_list += '<td>'+value.vencimento+'</td>';
@@ -36,20 +36,38 @@ $(document).ready(function(){
     });
 
 $(document).ready(function(){
-    $.getJSON("https://projectdividas.herokuapp.com/07/2020", function(data){
+    $.getJSON("https://projectdividas.herokuapp.com/GetSumByCardName/07/2020", function(data){
     var concept_list= '';
     $.each(data, function(key, value){
         concept_list += '<tr>';
         concept_list += '<td>'+value.Cardname+'</td>';
-        concept_list += '<td>'+parseFloat(value.Sum).toFixed(2)+'</td>';
+        concept_list += '<td>R$ '+parseFloat(value.Sum).toFixed(2)+'</td>';
         concept_list += '<td>'+value.DueDate+'</td>';
-        concept_list += '<td>'+'<button class="btn btn-dark btn-md" data-toggle="modal" data-target="#CardModal" value='+value.Cardname+'>Analítico</button>'+'</td>';
+        concept_list += '<td>'+'<button class="btn btn-dark btn-md" onclick="CreateCardTable(\'' + value.Cardname + '\');" id="cardnameValue" data-toggle="modal" data-target="#CardModal">Analítico</button>'+'</td>';
         concept_list += '</tr>';
     });
-    console.log(concept_list)
     $('#getSumCardDebts').append(concept_list);
         });
+});
+
+function CreateCardTable(cardname){
+    $.getJSON("https://projectdividas.herokuapp.com//Card/"+cardname, function(data){
+
+    var concept_list= '<thead><tr> <th scope="col">Parcela</th> <th scope="col">Plano</th> <th scope="col">Valor</th> <th scope="col">Descrição</th> <th scope="col">Tipo</th> <th scope="col">Status</th> </tr></thead>';
+    $("#getCardDebts").empty();
+    $.each(data, function(key, value){
+        concept_list += '<tr>';
+        concept_list += '<td>'+value.parcela+'</td>';
+        concept_list += '<td>'+value.numeroparcelas+'</td>';
+        concept_list += '<td> R$ '+parseFloat(value.valor).toFixed(2)+'</td>';
+        concept_list += '<td>'+value.Descricao+'</td>';
+        concept_list += '<td>'+value.TipoDeDivida+'</td>';
+        concept_list += '<td>'+value.Status+'</td>';
+        concept_list += '</tr>';
+        });
+    $('#getCardDebts').append(concept_list);
     });
+}
 
 $(document).ready(function(){
     $.getJSON("https://projectdividas.herokuapp.com//GetMonthSum/2020", function(data){
@@ -64,7 +82,7 @@ $(document).ready(function(){
     $.each(newList, function(key, value){
         concept_list += '<tr>';
         concept_list += '<td>'+value[0]+'</td>';
-        concept_list += '<td>'+parseFloat(value[1]).toFixed(2)+'</td>';
+        concept_list += '<td>R$ '+parseFloat(value[1]).toFixed(2)+'</td>';
         concept_list += '<td>'+'<button class="btn btn-dark btn-md">Analítico</button>'+'</td>';
         concept_list += '</tr>';
     });
@@ -79,27 +97,6 @@ $(document).ready(function() {
     });
 })
 
-$(document).ready(function() {
-    $('#getCardDebts').DataTable( {
-        "ajax": {
-            "url": "https://projectdividas.herokuapp.com//Card",
-            "dataSrc": ""
-        },
-        "columns": [
-            { "data": "name" },
-            { "data": "parcela" },
-            { "data": "valor", render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "vencimento" },
-            { "data": "TipoDeDivida" },
-            { "data": "Status" },
-            { "data": "numeroparcelas" },
-            { "data": "Descricao" }
-        ],
-        bFilter: false,
-        bInfo: false,
-        paging: false
-    } );
-})
 
 $(document).ready(function() {
     $('#getCards').DataTable( {

@@ -40,6 +40,7 @@
 				<a href="homepage.html" class="list-group-item bg-light">Home</a>
 				<a href="templates/Months.html" class="list-group-item bg-light">Meses</a>				
 				<a href="templates/Cards.html" class="list-group-item bg-light">Cartões</a>
+				<a href="templates/Received.html" class="list-group-item bg-light">Recebidos</a>
 			  </div>
 			</div>
 
@@ -186,33 +187,22 @@
 					</div>
 				</div>
 
-				<div class="modal fade bs-example-modal-lg" id="CardModal" tabindex="-1" role="dialog" aria-labelledby="CardModal">
+				<div class="modal fade bs-example-modal-lg" id="CardModal" tabindex="-1" role="dialog" aria-labelledby="CardModalLabel">
 					<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="CardModal">Cartões Analítico</h4>
+								<h4 class="modal-title" id="CardModalLabel">Cartões Analítico</h4>
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							</div>
 							<div class="table-responsive">
-								<table id="getCardDebts" class="table">
-									<thead>
-										<tr>
-										<th scope="col">Cartão</th>
-										<th scope="col">Parcela</th>
-										<th scope="col">Valor</th>
-										<th scope="col">Vencimento</th>
-										<th scope="col">Tipo</th>
-										<th scope="col">Status</th>
-										<th scope="col">Plano</th>
-										<th scope="col">Descricao</th>
-										</tr>
-									</thead>
-								</table>
+								<table id="getCardDebts" class="table"></table>
 							</div>
+							<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalCartaoValor">
+								<span class="material-icons">add_box</span>
+							</button>
 						</div>
 					</div>
 				</div>
-
 
 				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 					<div class="modal-dialog" role="document">
