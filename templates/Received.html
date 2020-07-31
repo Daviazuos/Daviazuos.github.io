@@ -33,19 +33,19 @@
 <html>
 	<body>
 		<div class="d-flex" id="wrapper">
-			<div class="bg-light border-right" id="sidebar-wrapper">
+			<div class="bg-dark border-right" id="sidebar-wrapper">
 			  <div class="sidebar-heading">Web Debts</div>
 			  
 			  <div class="list-group list-group-flush">
-				<a href="../homepage.html" class="list-group-item bg-light">Home</a>
-				<a href="Months.html" class="list-group-item bg-light">Meses</a>
-                <a href="Cards.html" class="list-group-item bg-light">Cartões</a>
-                <a href="Received.html" class="list-group-item bg-light">Recebidos</a>
+				<a href="../homepage.html" class="list-group-item bg-dark">Home</a>
+				<a href="Months.html" class="list-group-item bg-dark">Meses</a>
+                <a href="Cards.html" class="list-group-item bg-dark">Cartões</a>
+                <a href="Received.html" class="list-group-item bg-dark">Recebidos</a>
 			  </div>
 			</div>
 
 			<div id="page-content-wrapper">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
 				  <button class="btn btn-default" id="menu-toggle"></button>
 		  
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,49 +64,56 @@
 				  </div>
 				</nav>
 				<div class="container-fluid mt-n10">
-					<div class="dataTables_filter">
-						<table id="getCards" class="table table-striped table-bordered">
-							<thead>
-								<tr>
-								<th scope="col">Nome do Cartão</th>
-								<th scope="col">Vencimento</th>
-								<th scope="col">Fechamento</th>
-								</tr>
-							</thead>
-						</table>
-					</div>	
-					
-					<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalCartao">Adicionar Cartão</button>
-					
-					<div class="modal fade" id="ModalCartao" tabindex="-1" role="dialog" aria-labelledby="ModalCartaoLabel">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h4 class="modal-title" id="ModalCartaoLabel">Adicionar Dívidas</h4>
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
-								<div class="modal-body">
-									<form onsubmit='return onSubmitCard(this)'>
-										<p></p>
-										<div class="form-group mr-2">
-											<label class="sr-only" for="inputCardName" id="inputCardName">Nome do Cartão</label>
-											<input class="form-control" name="CardName" placeholder="Nome do Cartão">
-										</div>
-										<div class="form-group mr-2">
-											<label class="sr-only" for="inputDate">Data Vencimento</label>
-											<input class="form-control" type="number" min="1" max="31" name="Vencimento" step="1" placeholder="Dia Vencimento" data-bind="value:replyNumber" />
-										</div>
-										<div class="form-group mr-2">
-											<label class="sr-only" for="inputDate">Data Fechamento</label>
-											<input class="form-control" type="number" min="1" max="31" name="Fechamento" step="1" placeholder="Dia Fechamento" data-bind="value:replyNumber" />
-										</div>
-										
-										<button type='submit' class="btn btn-dark">Enviar</button>
-									</form>						  
+					<div class="geral">
+					<div class="card text-white bg-dark mb-4">
+						<div class="card-header">
+							Recebidos
+						</div>
+						<div class="dataTables_filter">
+							<table id="GetReceived" class="table table-striped table-bordered table-dark">
+								<thead>
+									<tr>
+									<th scope="col">Data</th>
+									<th scope="col">Valor</th>
+									<th scope="col">Tipo</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>							
+						<div class="modal fade" id="ModalCartao" tabindex="-1" role="dialog" aria-labelledby="ModalCartaoLabel">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="ModalCartaoLabel">Adicionar Recebido</h4>
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+									<div class="modal-body">
+										<form onsubmit='return onSubmitReceived(this)'>
+											<p></p>
+											<div class="form-group mr-2">
+												<label class="sr-only" for="Date">Data</label>
+												<input class="form-control" name="Date" type="date" placeholder="Data do Recebimento">
+											</div>
+											<div class="form-group mr-2">
+												<label class="sr-only" for="Valor">Valor</label>
+												<input class="form-control" name="Valor" type='number' step='0.01' placeholder="Valor recebido">
+											</div>
+											<div class="dropdown">
+												<select class="btn btn-secondary dropdown-toggle" id="Tipo" name="Tipo" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<option class="dropdown-item" id="simples" name="Tipo" value="simples">Simples</option>
+													<option class="dropdown-item" id= "fixa" name="Tipo" value="fixa">Fixa</option>
+												</select>
+											</div>
+											<p></p>
+											<button type='submit' class="btn btn-dark">Enviar</button>
+										</form>		
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalCartao">Adicionar Recebido</button>	
 				</div>
 			</div>
 		</div>

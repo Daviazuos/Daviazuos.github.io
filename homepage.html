@@ -33,19 +33,19 @@
 <html>
 	<body>
 		<div class="d-flex" id="wrapper">
-			<div class="bg-light border-right" id="sidebar-wrapper">
+			<div class="bg-dark border-right" id="sidebar-wrapper">
 			  <div class="sidebar-heading">Web Debts</div>
 			  
 			  <div class="list-group list-group-flush">
-				<a href="homepage.html" class="list-group-item bg-light">Home</a>
-				<a href="templates/Months.html" class="list-group-item bg-light">Meses</a>				
-				<a href="templates/Cards.html" class="list-group-item bg-light">Cartões</a>
-				<a href="templates/Received.html" class="list-group-item bg-light">Recebidos</a>
+				<a href="homepage.html" class="list-group-item bg-dark">Home</a>
+				<a href="templates/Months.html" class="list-group-item bg-dark">Meses</a>				
+				<a href="templates/Cards.html" class="list-group-item bg-dark">Cartões</a>
+				<a href="templates/Received.html" class="list-group-item bg-dark">Recebidos</a>
 			  </div>
 			</div>
 
 			<div id="page-content-wrapper">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
 				  <button class="btn btn-default" id="menu-toggle"></button>
 		  
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,67 +64,71 @@
 				  </div>
 				</nav>
 				<div class="container-fluid mt-n10">
-					<div class="card mb-4">
-						<div class="card-header">
-							Mês Atual
-						</div>
-						<div class="card-body">
-							<div class="row justify-content-md-start">
-								<div class="CardCard1"> 
-									<div class="card border-primary mb-3" style="max-width: 18rem;">
-										<div class="card-body">
-											<div class="col mt-0">
-												<h5 class="card-title">Total Geral</h5>
-												<h1 class="display-5 mt-1 mb-3" id="SumAllValues"></h1>
-											</div>							
+					<div class="mes">
+						<div class="card text-white bg-dark mb-4">
+							<div class="card-header">
+								Mês Atual
+							</div>
+							<div class="card-body">
+								<div class="row justify-content-md-start">
+									<div class="CardCard1"> 
+										<div class="card text-white bg-dark border-primary mb-3" style="max-width: 18rem;">
+											<div class="card-body">
+												<div class="col mt-0">
+													<h5 class="card-title">Total Geral</h5>
+													<h1 class="display-5 mt-1 mb-3" id="SumAllValues"></h1>
+												</div>							
+											</div>
 										</div>
-									</div>
-								</div>	
-								<div class="CardCard1"> 
-									<div class="card border-primary mb-3" style="max-width: 18rem;">
-										<div class="card-body">
-											<div class="col mt-0">
-												<h5 class="card-title">Total Recebido</h5>
-												<h1 class="display-5 mt-1 mb-3" id="SumAllValues">R$ 3800.00</h1>
-											</div>							
+									</div>	
+									<div class="CardCard1"> 
+										<div class="card text-white bg-dark border-primary mb-3" style="max-width: 18rem;">
+											<div class="card-body">
+												<div class="col mt-0">
+													<h5 class="card-title">Total Recebido</h5>
+													<h1 class="display-5 mt-1 mb-3" id="SumAllReceived"></h1>
+												</div>							
+											</div>
 										</div>
-									</div>
-								</div>	
+									</div>	
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="card mb-4">
-						<div class="card-header">
-							Mês Analítico
-						</div>
-						<div class="card-body">
-							<div class="row justify-content-md-start">
-								<div class="CardCard"> 
-									<div class="card border-primary mb-3" style="max-width: 18rem;">
-										<div class="card-body">
-											<div class="col mt-0">
-												<h5 class="card-title">Total Cartões</h5>
-												<h1 class="display-5 mt-1 mb-3" id="SumCardValues"></h1>
-												<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTableCard">
-													<span class="material-icons">format_align_justify</span>
-												</button>
-											</div>									
+					<div class="mesanal">
+						<div class="card text-white bg-dark mb-4">
+							<div class="card-header">
+								Mês Analítico
+							</div>
+							<div class="card-body">
+								<div class="row justify-content-md-start">
+									<div class="CardCard"> 
+										<div class="card text-white bg-dark border-primary mb-3" style="max-width: 18rem;">
+											<div class="card-body">
+												<div class="col mt-0">
+													<h5 class="card-title">Total Cartões</h5>
+													<h1 class="display-5 mt-1 mb-3" id="SumCardValues"></h1>
+													<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTableCard">
+														<span class="material-icons">format_align_justify</span>
+													</button>
+												</div>									
+											</div>
 										</div>
 									</div>
+									<div class="CardDebts">  
+										<div class="card text-white bg-dark border-primary mb-3">
+											<div class="card-body">
+												<div class="col mt-0">
+													<h5 class="card-title">Total Dívidas</h5>
+													<h1 class="display-5 mt-1 mb-3" id="SumValues"></h1>
+													<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTable">
+														<span class="material-icons">format_align_justify</span>
+													</button>
+												</div>									
+											</div>
+										</div>
+									</div>	
 								</div>
-								<div class="CardDebts">  
-									<div class="card border-primary mb-3">
-										<div class="card-body">
-											<div class="col mt-0">
-												<h5 class="card-title">Total Dívidas</h5>
-												<h1 class="display-5 mt-1 mb-3" id="SumValues"></h1>
-												<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalTable">
-													<span class="material-icons">format_align_justify</span>
-												</button>
-											</div>									
-										</div>
-									</div>
-								</div>	
 							</div>
 						</div>
 					</div>

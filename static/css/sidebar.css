@@ -1,5 +1,6 @@
  #wrapper {
     overflow-x: hidden;
+    background-color: rgb(82, 86, 87);
  }
 
 #sidebar-wrapper {
@@ -10,16 +11,21 @@
   -o-transition: margin .25s ease-out;
   transition: margin .25s ease-out;
   color: black;
+  
+  background-color: black;
 }
 
 #sidebar-wrapper .sidebar-heading {
   padding: 0.875rem 1.25rem;
   font-size: 1.2rem;
+  color: white;
+  background-color: black;
 }
 
 #sidebar-wrapper .list-group {
   width: 15rem;
-  color: white;
+  color: black;
+  background-color: black;
 }
 
 #page-content-wrapper {

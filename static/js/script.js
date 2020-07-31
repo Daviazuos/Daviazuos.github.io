@@ -36,6 +36,20 @@ $(document).ready(function(){
     });
 
 $(document).ready(function(){
+    $.getJSON("https://projectdividas.herokuapp.com/GetReceived", function(data){
+    var concept_list= '';
+    $.each(data, function(key, value){
+        concept_list += '<tr>';
+        concept_list += '<td>'+value.Date+'</td>';
+        concept_list += '<td>R$ '+parseFloat(value.Value).toFixed(2)+'</td>';
+        concept_list += '<td>'+value.Type+'</td>';
+        concept_list += '</tr>';
+    });
+    $('#GetReceived').append(concept_list);
+        });
+});
+
+$(document).ready(function(){
     $.getJSON("https://projectdividas.herokuapp.com/GetSumByCardName/07/2020", function(data){
     var concept_list= '';
     $.each(data, function(key, value){
@@ -162,6 +176,22 @@ function onSubmit( form ){
       alert("Valor Adicionado!")
   }
 
+function onSubmitReceived( form ){
+var data = objectifyForm(form);
+
+console.log(JSON.stringify(data))
+fetch("https://projectdividas.herokuapp.com//AddReceived", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+        cache: 'default',
+        mode: 'cors'
+    }).then(res=>res.json())
+    .catch((error) => {
+    console.log(error)})
+    alert("Valor Adicionado!")
+}
+
 function onSubmitCard( form ){
     var data = objectifyForm(form);
     fetch("https://projectdividas.herokuapp.com//AddCard", {
@@ -223,6 +253,15 @@ $.getJSON(APISum)
                 $('#SumAllValues').append($('<h1></h1>').val(p.Sum).html("R$ "+parseFloat(p.Sum).toFixed(2)));
             });
     });  
+
+var APISumReceived = "https://projectdividas.herokuapp.com/GetSumReceived";
+$.getJSON(APISumReceived)
+        .done(function(data){    
+        $.each(data, function (i, p) {
+                $('#SumAllReceived').append($('<h1></h1>').val(p.Sum).html("R$ "+parseFloat(p.Sum).toFixed(2)));
+            });
+    });
+    
 
 var APIAllSum = "https://projectdividas.herokuapp.com//GetMonthSum/2020";
 
