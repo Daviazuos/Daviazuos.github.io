@@ -139,12 +139,12 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title" id="ModalTableLabel">Dívidas Analítico</h4>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 							</div>
 							<div class="modal-body">
 								<div class="table-responsive">
 									<div class="table-responsive">
-										<table class="table" id="GetSimple">
+										<table class="table table-striped table-bordered" id="GetSimple">
 											<thead>
    												<tr>
 												<th>Dívida</th>
@@ -174,8 +174,9 @@
 								<h4 class="modal-title" id="ModalTableCardLabel">Cartões</h4>
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							</div>
+							<div class="modal-body">
 								<div class="table-responsive">
-									<table id="getSumCardDebts" class="table">
+									<table id="getSumCardDebts" class="table table-striped table-bordered">
 										<thead>
 											<tr>
 											<th scope="col">Cartão</th>
@@ -185,12 +186,12 @@
 											</tr>
 										</thead>
 									</table>
-								</div>					  
-							</div>
+								</div>			
+							</div>		  
 						</div>
 					</div>
 				</div>
-
+				
 				<div class="modal fade bs-example-modal-lg" id="CardModal" tabindex="-1" role="dialog" aria-labelledby="CardModalLabel">
 					<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
@@ -199,7 +200,9 @@
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							</div>
 							<div class="table-responsive">
-								<table id="getCardDebts" class="table"></table>
+								<div class="modal-body">
+								<table id="getCardDebts" class="table table-striped table-bordered"></table>
+								</div>
 							</div>
 							<button type="button" class="btn btn-dark btn" data-toggle="modal" data-target="#ModalCartaoValor">
 								<span class="material-icons">add_box</span>

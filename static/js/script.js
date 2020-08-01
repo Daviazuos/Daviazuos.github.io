@@ -65,7 +65,7 @@ $(document).ready(function(){
         concept_list += '<td>'+value.Cardname+'</td>';
         concept_list += '<td>R$ '+parseFloat(value.Sum).toFixed(2)+'</td>';
         concept_list += '<td>'+value.DueDate+'</td>';
-        concept_list += '<td>'+'<button class="btn btn-dark btn-md" onclick="CreateCardTable(\'' + value.Cardname + '\');" id="cardnameValue" data-toggle="modal" data-target="#CardModal">Analítico</button>'+'</td>';
+        concept_list += '<td>'+'<button class="btn btn-primary btn-md" onclick="CreateCardTable(\'' + value.Cardname + '\');" id="cardnameValue" data-toggle="modal" data-target="#CardModal">Analítico</button>'+'</td>';
         concept_list += '</tr>';
     });
     $('#getSumCardDebts').append(concept_list);
@@ -105,7 +105,7 @@ $(document).ready(function(){
         concept_list += '<tr>';
         concept_list += '<td>'+value[0]+'</td>';
         concept_list += '<td>R$ '+parseFloat(value[1]).toFixed(2)+'</td>';
-        concept_list += '<td>'+'<button class="btn btn-dark btn-md">Analítico</button>'+'</td>';
+        concept_list += '<td>'+'<button class="btn btn-primary btn-md">Analítico</button>'+'</td>';
         concept_list += '</tr>';
     });
     $('#MonthValues').append(concept_list);
@@ -296,48 +296,96 @@ function objectifyForm(formArray)
     }
 
 var APISumDebtsValues = "https://projectdividas.herokuapp.com//GetMonthSum/"+yearActual;
+var APISumReceived = "https://projectdividas.herokuapp.com/GetSumReceived";
+
+var result = []
+
+fetch(APISumReceived).then(res => 
+    res.json()).then((out) =>
+    $(function () {
+        result = Array(12).fill(out[0].Sum)}))
 
 fetch(APISumDebtsValues).then(res => 
                         res.json()).then((out) =>
                         $(function () {
-    // chart colors
-    var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d', '#FF0000'];
-    console.log()
-    /* large line chart */
-    var chLine = document.getElementById("chLine");
-    var chartData = {
-    labels: out[0]['month'],
-        datasets: [{
-        data: out[0]['sum'],
-        backgroundColor: colors[6],
-        borderColor: colors[5],
-        borderWidth: 4,
-        pointBackgroundColor: colors[0]
-    },{
-        data: [3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00,3800.00],
-        backgroundColor: colors[3],
-        borderColor: colors[1],
-        borderWidth: 4,
-        pointBackgroundColor: colors[3]
-    }],
-    };
-
-    if (chLine) {
-    new Chart(chLine, {
-    type: 'line',
-    data: chartData,
-    options: {
-        scales: {
-        yAxes: [{
-            ticks: {
-            beginAtZero: false
-            }
-        }]
-        },
-        legend: {
-        display: false
-        }
-    }
-    });
-    }
-}))
+                            var ctx = document.getElementById('chLine').getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: out[0]['month'],
+                                    datasets: [{
+                                        label: 'Dividas',
+                                        data: out[0]['sum'],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)'
+                                        ],
+                                        borderWidth: 1
+                                    },{
+                                        label: 'Recebido',
+                                        data: result,
+                                        backgroundColor: [
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                    }
+                                }
+                            })}))
