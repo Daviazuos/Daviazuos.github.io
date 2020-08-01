@@ -1,3 +1,8 @@
+var d = new Date();
+var monthActual = d.getMonth() +1;
+var yearActual = d.getFullYear();
+
+
 $(document).ready(function(){
     $.getJSON("https://projectdividas.herokuapp.com//Simple", function(data){
     var concept_list= '';
@@ -49,8 +54,11 @@ $(document).ready(function(){
         });
 });
 
+console.log(monthActual)
+console.log(yearActual)
+
 $(document).ready(function(){
-    $.getJSON("https://projectdividas.herokuapp.com/GetSumByCardName/07/2020", function(data){
+    $.getJSON("https://projectdividas.herokuapp.com/GetSumByCardName/"+monthActual+"/"+yearActual, function(data){
     var concept_list= '';
     $.each(data, function(key, value){
         concept_list += '<tr>';
@@ -84,7 +92,7 @@ function CreateCardTable(cardname){
 }
 
 $(document).ready(function(){
-    $.getJSON("https://projectdividas.herokuapp.com//GetMonthSum/2020", function(data){
+    $.getJSON("https://projectdividas.herokuapp.com//GetMonthSum/"+yearActual, function(data){
     var newList = [];
 
     for(var meses in data[0].month) 
@@ -230,7 +238,7 @@ $.getJSON(API)
             });
       });  
     
-var API = "https://projectdividas.herokuapp.com//GetDebtsSum/07/2020";
+var API = "https://projectdividas.herokuapp.com//GetDebtsSum/"+monthActual+"/"+yearActual;
 $.getJSON(API)
         .done(function(data){    
         $.each(data, function (i, p) {
@@ -238,7 +246,7 @@ $.getJSON(API)
             });
     });  
 
-var APICard = "https://projectdividas.herokuapp.com//GetCardsSum/07/2020";
+var APICard = "https://projectdividas.herokuapp.com//GetCardsSum/"+monthActual+"/"+yearActual;
 $.getJSON(APICard)
         .done(function(data){    
         $.each(data, function (i, p) {
@@ -246,7 +254,7 @@ $.getJSON(APICard)
             });
     });  
 
-var APISum = "https://projectdividas.herokuapp.com/GetAllDebtsSum/07/2020";
+var APISum = "https://projectdividas.herokuapp.com/GetAllDebtsSum/"+monthActual+"/"+yearActual;
 $.getJSON(APISum)
         .done(function(data){    
         $.each(data, function (i, p) {
@@ -263,7 +271,7 @@ $.getJSON(APISumReceived)
     });
     
 
-var APIAllSum = "https://projectdividas.herokuapp.com//GetMonthSum/2020";
+var APIAllSum = "https://projectdividas.herokuapp.com//GetMonthSum/"+yearActual;
 
 $.getJSON(APIAllSum)
     .done(function(data){  
@@ -287,7 +295,7 @@ function objectifyForm(formArray)
         return returnArray;
     }
 
-var APISumDebtsValues = "https://projectdividas.herokuapp.com//GetMonthSum/2020";
+var APISumDebtsValues = "https://projectdividas.herokuapp.com//GetMonthSum/"+yearActual;
 
 fetch(APISumDebtsValues).then(res => 
                         res.json()).then((out) =>
