@@ -21,6 +21,83 @@ $(document).ready(function(){
       });
     });
 
+var APIAllreceived = "https://projectdividas.herokuapp.com/GetReceived";
+
+$.getJSON(APIAllreceived)
+    .done(function(dataReceived)
+    {  
+        $.getJSON("https://projectdividas.herokuapp.com//GetAllValues/"+07+"/"+yearActual, function(data){
+            var concept_list= '';
+            var name = 0
+            $.each(data, function(key, value)
+            {
+                var newRadioButton = '';
+                name = name + 1
+                concept_list += '<tr>';
+                concept_list += '<td>'+value.Name+'</td>';
+                concept_list += '<td>R$ '+parseFloat(value.Valor).toFixed(2)+'</td>';
+                concept_list += '<td>'+value.Vencimento+'</td>';
+                for(var received in dataReceived) 
+                {
+                    var dia = dataReceived[received].Date.substring(8,10)  
+                    var valor = dataReceived[received].Value
+                    newRadioButton += '<div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name='+name+' id='+dia+' value='+dia+'> <label class="form-check-label" for='+dia+'>'+dia+'</label></div>'
+                }
+                concept_list += '<td>'+newRadioButton+'</td>';
+                concept_list += '<td>'+'<button class="btn btn-primary btn-md" onclick="verifica('+name+","+parseFloat(value.Valor)+');"></button>'+'</td>';
+            });
+            $('#GetAllValues').append(concept_list);
+        });
+    });
+
+var valor = 0
+
+function verifica(nameid, valueid)
+    {
+    $.getJSON(APIAllreceived)
+        .done(function (ReceivedValues)
+        {
+            var radios = document.getElementsByName(nameid);
+            for (var i = 0, length = radios.length; i < length; i++) 
+            {
+                if (radios[i].checked) 
+                {
+                    for(var valuesNew in ReceivedValues)
+                    {
+                        var dayreceived = ReceivedValues[valuesNew].Date.substring(8,10)
+                        if(dayreceived == radios[i].value)
+                        {
+                            valor = parseFloat(ReceivedValues[valuesNew].Value) - valueid
+                        }
+                    }
+                }
+            }
+        })
+        console.log(valor)
+    }
+
+var API = "https://projectdividas.herokuapp.com//GetDebtsSum/"+monthActual+"/"+yearActual;
+$.getJSON(API)
+        .done(function(data){    
+        $.each(data, function (i, p) {
+                $('#SumValues').append($('<h1></h1>').val(p.Sum).html("R$ "+parseFloat(p.Sum).toFixed(2)));
+            });
+    });  
+
+$(document).ready(function(){
+    $.getJSON("https://projectdividas.herokuapp.com/GetReceived", function(data){
+    var concept_list= '';
+    $.each(data, function(key, value){
+        concept_list += '<tr>';
+        concept_list += '<td>'+value.Date+'</td>';
+        concept_list += '<td>R$ '+parseFloat(value.Value).toFixed(2)+'</td>';
+        concept_list += '<td>'+value.Type+'</td>';
+        concept_list += '</tr>';
+    });
+    $('#GetReceived').append(concept_list);
+        });
+});
+
 
 $(document).ready(function(){
     $.getJSON("https://projectdividas.herokuapp.com//Simple", function(data){
@@ -53,9 +130,6 @@ $(document).ready(function(){
     $('#GetReceived').append(concept_list);
         });
 });
-
-console.log(monthActual)
-console.log(yearActual)
 
 $(document).ready(function(){
     $.getJSON("https://projectdividas.herokuapp.com/GetSumByCardName/"+monthActual+"/"+yearActual, function(data){
@@ -187,7 +261,6 @@ function onSubmit( form ){
 function onSubmitReceived( form ){
 var data = objectifyForm(form);
 
-console.log(JSON.stringify(data))
 fetch("https://projectdividas.herokuapp.com//AddReceived", {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
